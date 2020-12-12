@@ -1,0 +1,10 @@
+$body-bg: #f3f4f7;
+
+@import '~bootstrap/scss/bootstrap.scss';
+
+html,
+body,
+#root {
+    height: 100%;
+    width: 100%;
+}
