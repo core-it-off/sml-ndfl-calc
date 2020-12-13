@@ -1,0 +1,42 @@
+$color: rgb(108, 107, 169);
+
+.hint-icon {
+    display: inline-flex;
+    margin: 0px 5px;
+}
+
+.hint-icon .svg:hover {
+    stroke: $color;
+}
+
+.hint-icon__popupText {
+    position: absolute;
+    visibility: hidden;
+    background-color: $color; 
+    color: #fff;
+    text-align: left;
+    padding: 20px 15px;
+    bottom: -110px;
+    left: 74px;
+    z-index: 10;
+    font-size: small;
+    flex-shrink: 0;
+}
+
+.hint-icon__popupText::after {
+    content: "";
+    position: absolute;
+    top: -16px;
+    left: 0px;
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent transparent $color $color;
+}
+
+.hint-icon:hover .hint-icon__popupText {
+    visibility: visible;
+}
+
+.popupText--visible {
+    visibility: visible;
+}

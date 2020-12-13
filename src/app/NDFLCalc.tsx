@@ -1,11 +1,18 @@
 import React from 'react';
+import SalaryTypeChooser from './SalaryTypeChooser';
+import Switcher from './Switcher';
 
 const NDFLCalc = (): JSX.Element => {
     return (
         <div className="container d-flex flex-column">
-            <div className="alert alert-success" role="alert">
-                <strong>Well done!</strong> Bootstrap and Sass is ready
-            </div>
+            <small className="text-muted">Сумма</small>
+            <SalaryTypeChooser />
+            <Switcher
+                defaultState={true}
+                offStateText="Указать с НДФЛ"
+                onStateText="Без НДФЛ"
+                changeHandler={(state) => void 0}
+            />
         </div>
     )
 }
