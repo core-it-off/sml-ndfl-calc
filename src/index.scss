@@ -1,15 +1,13 @@
-// Customize common styles.
-$body-bg: #f3f4f7;
-
 // Customize radios.
 $form-check-margin-bottom: 2px;
 $form-text-margin-top: 0px;
 $form-check-input-margin-y: 0px;
 
 // Customize switchers.
-$custom-control-indicator-checked-bg: orange;
-$custom-control-indicator-active-bg: orange;
-$custom-control-indicator-focus-box-shadow: orange;
+$smlOrange: #F5A534;
+$custom-control-indicator-checked-bg: $smlOrange;
+$custom-control-indicator-active-bg: $smlOrange;
+$custom-control-indicator-focus-box-shadow: $smlOrange;
 $custom-control-indicator-bg: white;
 $custom-control-indicator-border-color: white;
 $custom-control-indicator-focus-border-color: white;

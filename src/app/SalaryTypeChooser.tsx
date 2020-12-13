@@ -1,25 +1,6 @@
 import React from 'react';
 import Hint from './Hint';
-
-const renderInputContainer = (
-    id: number,
-    content: string | JSX.Element,
-    checked?: boolean
-) => (
-    <div className="form-check">
-        <label className="form-check-label d-flex align-items-center">
-            <input
-                className="form-check-input"
-                type="radio"
-                name="salaryRadio"
-                id={`radio_${id}`}
-                value={`radio_${id}`}
-                defaultChecked={!!checked}
-            />
-            {content instanceof String ? <span>{content}</span> : content}
-        </label>
-    </div>
-);
+import { SALARY_TYPES, SALARY_TYPE_KEY } from './utils';
 
 const renderMROTLabel = (): JSX.Element => {
     return (
@@ -36,13 +17,41 @@ const renderMROTLabel = (): JSX.Element => {
     )
 };
 
-const SalaryTypeChooser = (): JSX.Element => {
+interface IProps {
+    typeChangedHandler: (type: SALARY_TYPE_KEY) => void;
+}
+
+const SalaryTypeChooser = ({ typeChangedHandler }: IProps): JSX.Element => {
+
+    const renderInputContainer = (
+        id: string,
+        content: string | JSX.Element,
+        checked?: boolean
+    ) => (
+        <div className="form-check">
+            <label className="form-check-label d-flex align-items-center">
+                <input
+                    className="form-check-input"
+                    type="radio"
+                    name="salaryRadio"
+                    id={id}
+                    defaultChecked={!!checked}
+                    onChange={(event) => {
+                        const val: SALARY_TYPE_KEY = event.currentTarget.id as SALARY_TYPE_KEY;
+                        typeChangedHandler(val);
+                    }}
+                />
+                {content instanceof String ? <span>{content}</span> : content}
+            </label>
+        </div>
+    );
+
     return (
         <div className="d-flex flex-column">
-            {renderInputContainer(1, 'Оклад за месяц', true)}
-            {renderInputContainer(2, renderMROTLabel())}
-            {renderInputContainer(3, 'Оплата за день')}
-            {renderInputContainer(4, 'Оплата за час')}
+            {renderInputContainer(SALARY_TYPES.month, 'Оклад за месяц', true)}
+            {renderInputContainer(SALARY_TYPES.mrot, renderMROTLabel())}
+            {renderInputContainer(SALARY_TYPES.day, 'Оплата за день')}
+            {renderInputContainer(SALARY_TYPES.hour, 'Оплата за час')}
         </div>
     );
 }

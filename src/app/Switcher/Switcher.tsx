@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './Switcher.scss';
 
 interface ISwitcherProps {
@@ -26,12 +26,12 @@ const renderSwitcher = (state: boolean, stateChangedHandler: IStateChangedHandle
 );
 
 const Switcher = ({
-    defaultState = false,
+    defaultState,
     onStateText,
     offStateText,
     changeHandler
 }: ISwitcherProps): JSX.Element => {
-    const [state, setState] = useState(defaultState);
+    const [state, setState] = useState(!!defaultState);
 
     return (
         <div className="switcher d-flex align-items-center">
