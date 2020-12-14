@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/sml-ndfl-calc/static/css/main.39a8bccc.chunk.css",
+    "main.js": "/sml-ndfl-calc/static/js/main.7f9cb943.chunk.js",
+    "main.js.map": "/sml-ndfl-calc/static/js/main.7f9cb943.chunk.js.map",
+    "runtime-main.js": "/sml-ndfl-calc/static/js/runtime-main.93b1469e.js",
+    "runtime-main.js.map": "/sml-ndfl-calc/static/js/runtime-main.93b1469e.js.map",
+    "static/js/2.7b140ec7.chunk.js": "/sml-ndfl-calc/static/js/2.7b140ec7.chunk.js",
+    "static/js/2.7b140ec7.chunk.js.map": "/sml-ndfl-calc/static/js/2.7b140ec7.chunk.js.map",
+    "index.html": "/sml-ndfl-calc/index.html",
+    "static/css/main.39a8bccc.chunk.css.map": "/sml-ndfl-calc/static/css/main.39a8bccc.chunk.css.map",
+    "static/js/2.7b140ec7.chunk.js.LICENSE.txt": "/sml-ndfl-calc/static/js/2.7b140ec7.chunk.js.LICENSE.txt",
+    "static/media/close.68a3e6d5.svg": "/sml-ndfl-calc/static/media/close.68a3e6d5.svg",
+    "static/media/info.08d515df.svg": "/sml-ndfl-calc/static/media/info.08d515df.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.93b1469e.js",
+    "static/js/2.7b140ec7.chunk.js",
+    "static/css/main.39a8bccc.chunk.css",
+    "static/js/main.7f9cb943.chunk.js"
+  ]
+}
