@@ -1,4 +1,5 @@
 An interview task (using react, typescript, sass, bootstrap, redux-form).
+
 See app in action: https://core-it-off.github.io/sml-ndfl-calc/
 
 ## Available Scripts
