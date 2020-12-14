@@ -14,7 +14,7 @@ const calcPopupVisibleClass = (visible: boolean) => {
 const Hint = ({ popupText }: IProps): JSX.Element => {
     const [popupVisible, popupSetVisible] = useState(false);
     const [forcePopupVisible, setForcePopupVisible] = useState(false);
-    
+
     return (
         <div className="hint-icon"
             onMouseOver={() => popupSetVisible(true)} 
@@ -22,6 +22,7 @@ const Hint = ({ popupText }: IProps): JSX.Element => {
             onClick={(event) => { 
                 event.nativeEvent.preventDefault();
                 setForcePopupVisible(!forcePopupVisible);
+                popupSetVisible(!popupVisible);
             }}
         >
             {!forcePopupVisible
