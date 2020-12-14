@@ -12,31 +12,29 @@ interface IProps {
     withNDFL: boolean;
 }
 
+const boldMoney = (moneyValue: string, description: string): JSX.Element => {
+    return (
+        <span>
+            <b>{moneyValue} &#8381;</b> {description}
+        </span>
+    )
+}
+
 const SalaryResults = ({ value, withNDFL }: IProps): JSX.Element => {
     
     const handsCash = (value: number) => {
         const handsVal = toHandsSumm(value, withNDFL);
-        return (
-            <span>
-                {moneyFormatter(handsVal)} &#8381; сотрудник будет получать на руки
-            </span>
-        );
+        return boldMoney(moneyFormatter(handsVal), 'сотрудник будет получать на руки');
     };
     
     const taxSumm = (value: number) => {
         const summ = companySumm(value, withNDFL);
-        return (
-            <span>
-                {moneyFormatter(calcNDFL(summ))} &#8381; НДФЛ, 13% от оклада
-            </span>
-        );
+        return boldMoney(moneyFormatter(calcNDFL(summ)), 'НДФЛ, 13% от оклада');
     }
     
-    const companyPayment = (value: number) => (
-        <span>
-            {moneyFormatter(companySumm(value, withNDFL))} &#8381; за сотрудника в месяц
-        </span>
-    )
+    const companyPayment = (value: number) => {
+        return boldMoney(moneyFormatter(companySumm(value, withNDFL)), 'за сотрудника в месяц');
+    }
 
     return (
         <div className="salaryResults d-flex flex-column">

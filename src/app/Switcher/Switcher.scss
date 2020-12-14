@@ -1,3 +1,7 @@
 .switcher .custom-control {
     margin-left: 8px;
 }
+
+.switcher .custom-control-label:before {
+    background-color: lightgrey;
+}

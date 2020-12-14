@@ -1,3 +1,22 @@
-.ndfl-calc .period {
+.ndfl-calc__sumLabel {
+    margin-bottom: 10px;
+}
+
+.ndfl-calc__switcher {
+    margin-top: 10px;
+}
+
+.ndfl-calc__middleBlock,
+.ndfl-calc__switcher,
+.ndfl-calc__moneyInput {
+    margin-left: 20px;
+}
+
+.ndfl-calc__periodLabel {
     margin-left: 5px;
+}
+
+.ndfl-calc__moneyInput {
+    margin-top: 16px;
+    margin-bottom: 20px;
 }

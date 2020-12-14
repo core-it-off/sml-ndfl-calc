@@ -5,7 +5,8 @@ interface ISwitcherProps {
     defaultState?: boolean;
     onStateText: string;
     offStateText: string;
-    changeHandler: IStateChangedHandler
+    changeHandler: IStateChangedHandler;
+    className: string;
 }
 
 interface IStateChangedHandler {
@@ -29,12 +30,13 @@ const Switcher = ({
     defaultState,
     onStateText,
     offStateText,
-    changeHandler
+    changeHandler,
+    className
 }: ISwitcherProps): JSX.Element => {
     const [state, setState] = useState(!!defaultState);
 
     return (
-        <div className="switcher d-flex align-items-center">
+        <div className={"switcher d-flex align-items-center " + className}>
             <small className={!state ? "font-weight-bold" : 'text-muted'}>
                 {offStateText}
             </small>

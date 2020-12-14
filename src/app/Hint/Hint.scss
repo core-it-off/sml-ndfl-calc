@@ -5,6 +5,7 @@ $color: #5E6CAB;
     margin: 0px 5px;
 }
 
+.hint-icon .svg--active,
 .hint-icon .svg:hover {
     stroke: $color;
 }
@@ -16,11 +17,10 @@ $color: #5E6CAB;
     color: #fff;
     text-align: left;
     padding: 20px 15px;
-    bottom: -110px;
-    left: 74px;
-    z-index: 10;
+    bottom: -114px;
+    left: 80px;
+    z-index: 1000;
     font-size: small;
-    flex-shrink: 0;
 }
 
 .hint-icon__popupText::after {

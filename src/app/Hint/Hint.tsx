@@ -20,11 +20,14 @@ const Hint = ({ popupText }: IProps): JSX.Element => {
             onMouseOver={() => popupSetVisible(true)} 
             onMouseLeave={() => popupSetVisible(false)}
             onClick={(event) => { 
-                event.preventDefault();
+                event.nativeEvent.preventDefault();
                 setForcePopupVisible(!forcePopupVisible);
             }}
         >
-            {!forcePopupVisible ? <InfoIcon className="svg"/> : <CloseIcon />}
+            {!forcePopupVisible
+                ? <InfoIcon className="svg"/>
+                : <CloseIcon className={forcePopupVisible ? 'svg--active' : ''} />
+            }
             <span className={`hint-icon__popupText ${calcPopupVisibleClass(popupVisible || forcePopupVisible)}`}>
                 {popupText}
             </span>

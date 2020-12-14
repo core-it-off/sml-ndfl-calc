@@ -14,25 +14,28 @@ const NDFLCalc = (): JSX.Element => {
 
     return (
         <div className="ndfl-calc container d-flex flex-column">
-            <small className="text-muted">Сумма</small>
-            <SalaryTypeChooser typeChangedHandler={setSalaryType}/>
-            <Switcher
-                defaultState={!withNDFL}
-                offStateText="Указать с НДФЛ"
-                onStateText="Без НДФЛ"
-                changeHandler={setWithNDFL}
-            />
-            <div className="d-flex align-items-center">
-                {
-                    salaryType !== SALARY_TYPES.mrot ?
-                    <>
-                        <MoneyInput
-                            value={value}
-                            textChangedHandler={setValue}
-                        />
-                        <span className="period">{toPeriod(salaryType)}</span>
-                    </> : null
-                }
+            <small className="ndfl-calc__sumLabel text-muted">Сумма</small>
+            <div className="ndfl-calc__middleBlock">
+                <SalaryTypeChooser typeChangedHandler={setSalaryType}/>
+                <Switcher
+                    defaultState={!withNDFL}
+                    offStateText="Указать с НДФЛ"
+                    onStateText="Без НДФЛ"
+                    changeHandler={setWithNDFL}
+                    className="ndfl-calc__switcher"
+                />
+                <div className="ndfl-calc__moneyInput d-flex align-items-center">
+                    {
+                        salaryType !== SALARY_TYPES.mrot ?
+                        <>
+                            <MoneyInput
+                                value={value}
+                                textChangedHandler={setValue}
+                            />
+                            <span className="ndfl-calc__periodLabel">{toPeriod(salaryType)}</span>
+                        </> : null
+                    }
+                </div>
             </div>
             {
                 salaryType === SALARY_TYPES.month ? 

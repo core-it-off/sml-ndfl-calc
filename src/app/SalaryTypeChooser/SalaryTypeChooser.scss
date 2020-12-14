@@ -1,0 +1,16 @@
+.salaryTypes {
+
+    .custom-radio {
+        font-weight: 500;
+    }
+
+    .custom-control-label::before,
+    .custom-control-input:checked ~ .custom-control-label::before {
+        background-color: white;
+        border-color: lightgray;
+    }
+    
+    .custom-control-label::after {
+        background-size: 70%;
+    }
+}
