@@ -1,4 +1,6 @@
 import React from 'react';
+import { Field, WrappedFieldProps } from 'redux-form'
+
 import Hint from '../Hint';
 import { SALARY_TYPES, SALARY_TYPE_KEY } from '../utils';
 import './SalaryTypeChooser.scss';
@@ -18,27 +20,23 @@ const renderMROTLabel = (): JSX.Element => {
     )
 };
 
-interface IProps {
-    typeChangedHandler: (type: SALARY_TYPE_KEY) => void;
-}
-
-const SalaryTypeChooser = ({ typeChangedHandler }: IProps): JSX.Element => {
+const SalaryTypeChooser = (): JSX.Element => {
 
     const renderInputContainer = (
+        props: WrappedFieldProps,
         id: string,
-        content: string | JSX.Element,
-        checked?: boolean
+        content: string | JSX.Element
     ) => (
         <div className="form-check custom-radio">
             <input
+                checked={props.input.value === id}
                 className="custom-control-input"
                 type="radio"
-                name="salaryRadio"
+                value={id}
                 id={id}
-                defaultChecked={!!checked}
                 onChange={(event) => {
                     const val: SALARY_TYPE_KEY = event.currentTarget.id as SALARY_TYPE_KEY;
-                    typeChangedHandler(val);
+                    props.input.onChange(val);
                 }}
             />
             <label className="custom-control-label d-flex align-items-center" htmlFor={id} />
@@ -48,10 +46,18 @@ const SalaryTypeChooser = ({ typeChangedHandler }: IProps): JSX.Element => {
 
     return (
         <div className="salaryTypes d-flex flex-column">
-            {renderInputContainer(SALARY_TYPES.month, 'Оклад за месяц', true)}
-            {renderInputContainer(SALARY_TYPES.mrot, renderMROTLabel())}
-            {renderInputContainer(SALARY_TYPES.day, 'Оплата за день')}
-            {renderInputContainer(SALARY_TYPES.hour, 'Оплата за час')}
+            <Field name="salaryType" component={
+                (props: WrappedFieldProps) => renderInputContainer(props, SALARY_TYPES.month, 'Оклад за месяц')
+            } />
+            <Field name="salaryType" component={
+                (props: WrappedFieldProps) => renderInputContainer(props, SALARY_TYPES.mrot, renderMROTLabel())
+            } />
+            <Field name="salaryType" component={
+                (props: WrappedFieldProps) => renderInputContainer(props, SALARY_TYPES.day, 'Оплата за день')
+            } />
+            <Field name="salaryType" component={
+                (props: WrappedFieldProps) => renderInputContainer(props, SALARY_TYPES.hour, 'Оплата за час')
+            } />
         </div>
     );
 }

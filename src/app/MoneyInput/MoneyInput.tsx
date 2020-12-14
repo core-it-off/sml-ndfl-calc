@@ -1,26 +1,21 @@
 import React from 'react';
+import { Field } from 'redux-form';
+
 import { moneyFormatter, moneyToNumber } from '../utils';
 import './MoneyInput.scss';
 
-interface IProps {
-    value: number;
-    textChangedHandler: Function;
-}
-
-const MoneyInput = ({ value, textChangedHandler }: IProps) => {
+const MoneyInput = () => {
 
     return (
         <div className="d-flex align-items-center">
-            <input
+            <Field
+                name="value"
+                component="input"
                 type="text"
                 className="moneyInput form-control"
                 id="money"
-                min={0}
-                value={moneyFormatter(value)}
-                onChange={(event) => {
-                    const val = event.currentTarget.value;
-                    textChangedHandler(moneyToNumber(val));
-                }}
+                format={moneyFormatter}
+                normalize={moneyToNumber}
             />
             <div className="moneyInput__currency font-weight-bold">&#8381;</div>
         </div>

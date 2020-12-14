@@ -1,53 +1,40 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Field, WrappedFieldProps } from 'redux-form';
 import './Switcher.scss';
 
 interface ISwitcherProps {
-    defaultState?: boolean;
+    state: boolean;
     onStateText: string;
     offStateText: string;
-    changeHandler: IStateChangedHandler;
     className: string;
 }
 
-interface IStateChangedHandler {
-    (state: boolean): void; 
-}
-
-const renderSwitcher = (state: boolean, stateChangedHandler: IStateChangedHandler) => (
+const renderSwitcher = ({ input }: WrappedFieldProps): JSX.Element => (
     <div className="custom-control custom-switch">
         <input
-            checked={state}
+            checked={input.value}
             type="checkbox"
             className="custom-control-input"
             id="input"
-            onChange={(event) => stateChangedHandler(event.currentTarget.checked)}
+            onChange={(event) => input.onChange(event.currentTarget.checked)}
         />
         <label className="custom-control-label" htmlFor="input" />
     </div>  
 );
 
 const Switcher = ({
-    defaultState,
+    state,
     onStateText,
     offStateText,
-    changeHandler,
     className
 }: ISwitcherProps): JSX.Element => {
-    const [state, setState] = useState(!!defaultState);
-
     return (
         <div className={"switcher d-flex align-items-center " + className}>
-            <small className={!state ? "font-weight-bold" : 'text-muted'}>
+            <small className={state ? "font-weight-bold" : 'text-muted'}>
                 {offStateText}
             </small>
-            {renderSwitcher(
-                state, 
-                (value) => {
-                    setState(value);
-                    changeHandler(value);
-                })
-            }
-            <small className={state ? "font-weight-bold" : 'text-muted'}>
+            <Field name="withNDFL" component={renderSwitcher} />
+            <small className={!state ? "font-weight-bold" : 'text-muted'}>
                 {onStateText}
             </small>
         </div>

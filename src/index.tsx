@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 
-import NDFLCalc from './app/NDFLCalc';
+import App from './app/App';
 
 document.title = "NDFL Calculator";
 
 ReactDOM.render(
-  <NDFLCalc />,
+  <App />,
   document.getElementById('root')
 );

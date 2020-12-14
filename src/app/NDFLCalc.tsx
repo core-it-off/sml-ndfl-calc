@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { reduxForm, getFormValues } from 'redux-form';
+
 import SalaryTypeChooser from './SalaryTypeChooser';
 import Switcher from './Switcher';
 import MoneyInput from './MoneyInput';
@@ -7,45 +10,57 @@ import { SALARY_TYPES, SALARY_TYPE_KEY, toPeriod } from './utils';
 
 import './NDFLCalc.scss';
 
+interface IState {
+    value: number;
+    salaryType: SALARY_TYPE_KEY;
+    withNDFL: boolean;
+}
+
 const NDFLCalc = (): JSX.Element => {
-    const [value, setValue] = useState(0);
-    const [salaryType, setSalaryType] = useState<SALARY_TYPE_KEY>(SALARY_TYPES.month);
-    const [withNDFL, setWithNDFL] = useState(false);
+    
+    const values = useSelector((state): IState => getFormValues('ndflCalc')(state) as IState);
 
     return (
         <div className="ndfl-calc container d-flex flex-column">
             <small className="ndfl-calc__sumLabel text-muted">Сумма</small>
             <div className="ndfl-calc__middleBlock">
-                <SalaryTypeChooser typeChangedHandler={setSalaryType}/>
+                <SalaryTypeChooser />
                 <Switcher
-                    defaultState={!withNDFL}
+                    state={!values.withNDFL}
                     offStateText="Указать с НДФЛ"
                     onStateText="Без НДФЛ"
-                    changeHandler={setWithNDFL}
                     className="ndfl-calc__switcher"
                 />
                 <div className="ndfl-calc__moneyInput d-flex align-items-center">
                     {
-                        salaryType !== SALARY_TYPES.mrot ?
+                        values.salaryType !== SALARY_TYPES.mrot ?
                         <>
-                            <MoneyInput
-                                value={value}
-                                textChangedHandler={setValue}
-                            />
-                            <span className="ndfl-calc__periodLabel">{toPeriod(salaryType)}</span>
+                            <MoneyInput />
+                            <span className="ndfl-calc__periodLabel">{toPeriod(values.salaryType)}</span>
                         </> : null
                     }
                 </div>
             </div>
             {
-                salaryType === SALARY_TYPES.month ? 
+                values.salaryType === SALARY_TYPES.month ? 
                 <SalaryResults
-                    value={value}
-                    withNDFL={!withNDFL}
+                    value={values.value}
+                    withNDFL={!values.withNDFL}
                 /> : null
             }
         </div>
     )
 }
 
-export default NDFLCalc;
+const initialValues = {
+    salaryType: SALARY_TYPES.month,
+    withNDFL: true,
+    value: 40000
+};
+
+const NDFLCalcRedux = reduxForm<IState>({
+    form: 'ndflCalc',
+    initialValues
+})(NDFLCalc);
+
+export default NDFLCalcRedux;
