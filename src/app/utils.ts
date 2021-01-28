@@ -1,4 +1,4 @@
-export const moneyFormatter = (value: number | string): string => {
+export const moneyFormatter = (value: number | string = 0): string => {
     return Number(value).toLocaleString('ru');
 };
 

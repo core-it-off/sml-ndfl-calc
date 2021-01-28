@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
 
 const store = createStore(rootReducer);
 
-const App = () => (
+const App = (): JSX.Element => (
     <Provider store={store}>
         <NDFLCalc />
     </Provider>

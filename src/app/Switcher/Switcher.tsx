@@ -27,18 +27,16 @@ const Switcher = ({
     onStateText,
     offStateText,
     className
-}: ISwitcherProps): JSX.Element => {
-    return (
-        <div className={"switcher d-flex align-items-center " + className}>
-            <small className={state ? "font-weight-bold" : 'text-muted'}>
-                {offStateText}
-            </small>
-            <Field name="withNDFL" component={renderSwitcher} />
-            <small className={!state ? "font-weight-bold" : 'text-muted'}>
-                {onStateText}
-            </small>
-        </div>
-    )
-}
+}: ISwitcherProps): JSX.Element => (
+    <div className={"switcher d-flex align-items-center " + className}>
+        <small className={state ? "font-weight-bold" : 'text-muted'}>
+            {offStateText}
+        </small>
+        <Field name="withNDFL" component={renderSwitcher} />
+        <small className={!state ? "font-weight-bold" : 'text-muted'}>
+            {onStateText}
+        </small>
+    </div>
+);
 
 export default Switcher;

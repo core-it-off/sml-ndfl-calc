@@ -4,7 +4,7 @@ import { Field } from 'redux-form';
 import { moneyFormatter, moneyToNumber } from '../utils';
 import './MoneyInput.scss';
 
-const MoneyInput = () => {
+const MoneyInput = (): JSX.Element => {
 
     return (
         <div className="d-flex align-items-center">

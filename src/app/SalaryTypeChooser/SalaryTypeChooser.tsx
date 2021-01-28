@@ -26,7 +26,7 @@ const SalaryTypeChooser = (): JSX.Element => {
         props: WrappedFieldProps,
         id: string,
         content: string | JSX.Element
-    ) => (
+    ): JSX.Element => (
         <div className="form-check custom-radio">
             <input
                 checked={props.input.value === id}
