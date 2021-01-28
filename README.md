@@ -1,6 +1,12 @@
 An interview task (using react, typescript, sass, bootstrap, redux-form).
 
+Task input:
+![Task input](https://github.com/core-it-off/sml-ndfl-calc/blob/master/testTask.png)
+
 See app in action: https://core-it-off.github.io/sml-ndfl-calc/
+
+
+
 
 ## Available Scripts
 
